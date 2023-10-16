@@ -1,10 +1,39 @@
 <header>
     <div class="p-3 mx-40 w-4/5 bg-indigo-500 rounded-b grid">
-        <button class="w-5 col-start-12 bg-yellow-200 rounded" phx-click="inc-size">+</button>
-        <button class="w-5 col-start-13 bg-yellow-200 rounded" phx-click="dec-size">-</button>
+        <button class="w-5 col-start-12 bg-almond rounded" phx-click="inc-size">+</button>
+        <button class="w-5 col-start-13 bg-almond rounded" phx-click="dec-size">-</button>
     </div>
 </header>
+<div class="h-10"></div>
+<div class="grid columns-12">
+    <table class="col-start-2 col-end-3 rounded-r-xl">
+        <tr>
+            <th class="p-2 bg-oxford_blue rounded-t text-sage">Katalog</th>
+        </tr>
 
-<main>
-    <%= @inner_content %>
-</main>
+        <tr>
+            <th class="bg-almond"><hr class="h-2"></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond rounded-t-sm"><button phx-click="home">Wprowadzenie</button></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond"><button phx-click="regulamin">Regulamin</button></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond"><button phx-click="faq">Pomoc - FAQ</button></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-cambridge_blue"><button phx-click="konto">Twoje konto</button></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond"><button phx-click="katalog">Katalog Książek</button></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-cambridge_blue rounded-b-sm"><button phx-click="biblioteka">Powrót do <b>BIBLIOTEKA</b></button></th>
+        </tr>
+    </table>
+    <main class="col-start-4 col-end-10 w-4/5 bg-almond rounded-xl">
+        <%= @inner_content %>
+    </main>
+</div>

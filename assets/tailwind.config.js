@@ -15,6 +15,10 @@ module.exports = {
     extend: {
       colors: {
         brand: "#FD4F00",
+        cambridge_blue: "#6F9283",
+        sage: "#CDC6A5",
+        oxford_blue: "#031D44",
+        almond: "#F0DCCA"
       }
     },
   },
