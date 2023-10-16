@@ -1,4 +1,5 @@
 defmodule LibraryWeb.Router do
+  alias LibraryWeb.LibraryLive
   use LibraryWeb, :router
 
   pipeline :browser do
@@ -19,7 +20,11 @@ defmodule LibraryWeb.Router do
 
     get "/", PageController, :home
 
-    live "/home", LibraryLive.Home, :home
+    live "/katalog/index", Live.LibraryLive.Index, :index
+    live "/katalog/regulamin", Live.LibraryLive.Regulamin, :regulamin
+    live "/katalog/pomoc", Live.LibraryLive.Pommoc, :pomoc
+    live "/katalog/logowanie", Live.LibraryLive.Konto, :logowanie
+    live "/katalog/ini", Live.LibraryLive.Katalog, :katalog
   end
 
   # Other scopes may use custom stacks.
