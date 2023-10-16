@@ -1,10 +1,39 @@
 <header>
     <div class="p-3 mx-40 w-4/5 bg-indigo-500 rounded-b grid">
-        <button class="w-5 col-start-12 bg-yellow-200 rounded" phx-click="inc-size">+</button>
-        <button class="w-5 col-start-13 bg-yellow-200 rounded" phx-click="dec-size">-</button>
+        <button class="w-5 col-start-12 bg-almond rounded" phx-click="inc-size">+</button>
+        <button class="w-5 col-start-13 bg-almond rounded" phx-click="dec-size">-</button>
     </div>
 </header>
+<div class="h-10"></div>
+<div class="grid columns-12">
+    <table class="col-start-2 col-end-3 rounded-r-xl">
+        <tr>
+            <th class="p-2 bg-oxford_blue rounded-t text-sage">Katalog</th>
+        </tr>
 
-<main>
-    <%= @inner_content %>
-</main>
+        <tr>
+            <th class="bg-almond"><hr class="h-2"></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond rounded-t-sm"><a href={~p"/katalog/index"}>Wprowadzenie</a></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond"><a href={~p"/katalog/regulamin"}>Regulamin</a></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond"><a href={~p"/katalog/pomoc"}>Pomoc - FAQ</a></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-cambridge_blue"><a href={~p"/katalog/logowanie"}>Twoje konto</a></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-almond"><a href={~p"/katalog/ini?katalog=1"}>Katalog Książek</a></th>
+        </tr>
+        <tr>
+            <th class="p-2 bg-cambridge_blue rounded-b-sm"><a href={~p"/"}>Powrót do <b>BIBLIOTEKA</b></a></th>
+        </tr>
+    </table>
+    <main class="col-start-4 col-end-10 w-4/5 bg-almond rounded-xl">
+        <%= @inner_content %>
+    </main>
+</div>
