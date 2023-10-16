@@ -52,7 +52,7 @@ defmodule LibraryWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {LibraryWeb.Layouts, :app}
+        layout: {LibraryWeb.Layouts, :top}
 
       unquote(html_helpers())
     end
