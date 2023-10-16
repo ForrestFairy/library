@@ -7,7 +7,7 @@ defmodule LibraryWeb.Endpoint do
   @session_options [
     store: :cookie,
     key: "_library_key",
-    signing_salt: "d79PuAQX",
+    signing_salt: "LvNtfnMn",
     same_site: "Lax"
   ]
 

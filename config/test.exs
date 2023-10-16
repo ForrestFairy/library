@@ -17,7 +17,7 @@ config :library, Library.Repo,
 # you can enable the server option below.
 config :library, LibraryWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "QKmrXt6s5KkbNsf7HXUAtE2nl+gln2Eskwv288ax8UX7rGLFK8Ma2cMcHhBqo+jv",
+  secret_key_base: "wtQH8sA/ChC7fBUeO7cEpGa01tfWKFhEG9oMMS4X3rD0kZRsDPVO+I7etNymrWfH",
   server: false
 
 # In test we don't send emails.

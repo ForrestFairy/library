@@ -5,7 +5,7 @@ defmodule LibraryWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {LibraryWeb.Layouts, :root}
+    plug :put_root_layout, {LibraryWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -18,6 +18,8 @@ defmodule LibraryWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/home", LibraryLive.Home, :home
   end
 
   # Other scopes may use custom stacks.

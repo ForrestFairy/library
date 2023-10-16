@@ -14,8 +14,8 @@ config :library, Library.Repo,
 # debugging and code reloading.
 #
 # The watchers configuration can be used to run external
-# watchers to your application. For example, we can use it
-# to bundle .js and .css sources.
+# watchers to your application. For example, we use it
+# with esbuild to bundle .js and .css sources.
 config :library, LibraryWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
@@ -23,7 +23,7 @@ config :library, LibraryWeb.Endpoint,
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "O3+n6REPDYBOxCN7ZakfOF9bl5Aik0BprhRx8ljW3Lg2WGnG3CdI8kiACkc5OufT",
+  secret_key_base: "LG+gjxDaNp8HmDVBs+64bDXR1vE0iks02HYTi0S1urtsHT34RW0+0rDn+xC4E/Bv",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}

@@ -19,7 +19,7 @@ config :library, LibraryWeb.Endpoint,
     layout: false
   ],
   pubsub_server: Library.PubSub,
-  live_view: [signing_salt: "SW8JhpuY"]
+  live_view: [signing_salt: "o51wpelr"]
 
 # Configures the mailer
 #
@@ -42,7 +42,7 @@ config :esbuild,
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "3.3.2",
+  version: "3.2.7",
   default: [
     args: ~w(
       --config=tailwind.config.js
