@@ -8,6 +8,12 @@ defmodule Library.Books do
 
   alias Library.Books.Book
 
+  def list_katalog(katalog) do
+    Repo.all(from book in Book,
+              where: book.location == ^katalog,
+              select: book)
+  end
+
   @doc """
   Returns the list of books.
 

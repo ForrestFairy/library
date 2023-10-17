@@ -1,3 +1,10 @@
-Hello in katalog
+<h1 class="p-4">Hello in katalog<b> <%= @katalog %> </b></h1>
 
-<b> <%= @katalog %> </b>
+<div class="p-4">
+    <%= for book <- Books.list_katalog(assigns.katalog) do %>
+        <div>
+        <%= book.author %> -
+        <b> <%= book.title %> </b>
+        </div>
+    <% end %>
+</div>
