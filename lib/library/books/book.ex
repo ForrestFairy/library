@@ -5,11 +5,11 @@ defmodule Library.Books.Book do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "books" do
-    field :state, :integer
+    field :state, :integer, default: 1
     field :title, :string
-    field :location, :string
+    field :location, :integer
     field :author, :string
-    field :ISBN, :string
+    field :isbn, :string
     field :genre, {:array, :string}
 
     timestamps()
@@ -18,7 +18,7 @@ defmodule Library.Books.Book do
   @doc false
   def changeset(book, attrs) do
     book
-    |> cast(attrs, [:title, :author, :ISBN, :genre, :location, :state])
-    |> validate_required([:title, :author, :ISBN, :genre, :location, :state])
+    |> cast(attrs, [:title, :author, :isbn, :genre, :location, :state])
+    |> validate_required([:title, :author, :isbn, :genre, :location])
   end
 end

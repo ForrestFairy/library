@@ -6,9 +6,9 @@ defmodule Library.Repo.Migrations.CreateBooks do
       add :id, :binary_id, primary_key: true
       add :title, :string
       add :author, :string
-      add :ISBN, :string
+      add :isbn, :string
       add :genre, {:array, :string}
-      add :location, :string
+      add :location, :integer
       add :state, :integer
 
       timestamps()
