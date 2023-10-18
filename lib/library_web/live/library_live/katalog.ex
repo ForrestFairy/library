@@ -8,7 +8,9 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
         katalog: katalog,
         book: "",
         matches: [],
-        books: [],
+        books:
+        Books.list_katalog(katalog),
+        # Books.search_by_title("0", "Przedwiośnie"),
         loading: false
       )
 

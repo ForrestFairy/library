@@ -21,7 +21,7 @@
                 readonly={@loading}>
 
         <datalist id="matches">
-            <%= for match <- @matches do %>
+            <%= for match <- Enum.uniq_by(@matches, fn book -> book.title end) do %>
                 <option value={match.title}><%= match.title %></option>
             <% end %>
         </datalist>
@@ -40,10 +40,10 @@
         </div>
     <% end %>
 
-    <div class="books">
-        <ul>
+    <div class="grid grid-cols-2 gap-4">
+        
             <%= for book <- @books do %>
-                <li>
+                <div class="w-3/4 outline rounded mt-3 p-5 justify-center justify-self-center grid grid-cols-2 book">
                     <div class="first-line">
                         <div class="title">
                             <b><%= book.title %></b>
@@ -52,8 +52,15 @@
                             <%= book.author %>
                         </div>
                     </div>
-                </li>
+                    <div class="justify-end justify-self-end second-line">
+                        <%= if book.state == 1 do %>
+                            <img class="h-12" src="/images/tick.svg">
+                        <%= else %>
+                            <img class="h-12" src="/images/cross.svg">
+                        <% end %>
+                    </div>
+                </div>
             <% end %> 
-        </ul>
+        
     </div>
 </div>

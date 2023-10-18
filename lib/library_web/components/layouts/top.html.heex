@@ -5,35 +5,32 @@
     </div>
 </header>
 <div class="h-10"></div>
-<div class="grid columns-12">
-    <table class="col-start-2 col-end-3 rounded-r-xl">
-        <tr>
-            <th class="p-2 bg-oxford_blue rounded-t text-sage">Katalog</th>
-        </tr>
+<div class="">
+    <ul class="fixed left-40 rounded-r-xl max-h-80 w-1/6 max-w-lg ml-7 bg-almond">
 
-        <tr>
-            <th class="bg-almond"><hr class="h-2"></th>
-        </tr>
-        <tr>
-            <th class="p-2 bg-almond rounded-t-sm"><a href={~p"/katalog/index"}>Wprowadzenie</a></th>
-        </tr>
-        <tr>
-            <th class="p-2 bg-almond"><a href={~p"/katalog/regulamin"}>Regulamin</a></th>
-        </tr>
-        <tr>
-            <th class="p-2 bg-almond"><a href={~p"/katalog/pomoc"}>Pomoc - FAQ</a></th>
-        </tr>
-        <tr>
-            <th class="p-2 bg-cambridge_blue"><a href={~p"/katalog/logowanie"}>Twoje konto</a></th>
-        </tr>
-        <tr>
-            <th class="p-2 bg-almond"><a href={~p"/katalog/ini?katalog=0"}>Katalog Książek</a></th>
-        </tr>
-        <tr>
-            <th class="p-2 bg-cambridge_blue rounded-b-sm"><a href={~p"/"}>Powrót do <b>BIBLIOTEKA</b></a></th>
-        </tr>
-    </table>
-    <main class="col-start-4 col-end-10 w-4/5 bg-almond rounded-xl">
+            <li class="font-bold text-center p-2 bg-oxford_blue rounded-t text-sage">Katalog</li>
+            <li class="bg-almond"><hr class="h-2"></li>
+            
+            <li class="font-bold text-center p-2 bg-almond rounded-t-sm">
+                <a href={~p"/katalog/index"}>Wprowadzenie</a>
+            </li>
+            <li class="font-bold text-center p-2 bg-almond">
+                <a href={~p"/katalog/regulamin"}>Regulamin</a>
+            </li>
+            <li class="font-bold text-center p-2 bg-almond">
+                <a href={~p"/katalog/pomoc"}>Pomoc - FAQ</a>
+            </li>
+            <li class="font-bold text-center p-2 bg-cambridge_blue">
+                <a href={~p"/katalog/logowanie"}>Twoje konto</a>
+            </li>
+            <li class="font-bold text-center p-2 bg-almond">
+                <a href={~p"/katalog/ini?katalog=0"}>Katalog Książek</a>
+            </li>
+            <li class="font-bold text-center p-2 bg-cambridge_blue rounded-b-sm">
+                <a href={~p"/"}>Powrót do <b>BIBLIOTEKA</b></a>
+            </li>
+    </ul>
+    <main class="fixed right-56 w-1/2 bg-almond rounded-xl h-5/6">
         <%= @inner_content %>
     </main>
 </div>
