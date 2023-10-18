@@ -8,10 +8,28 @@ defmodule Library.Books do
 
   alias Library.Books.Book
 
+  def list_katalog("0"), do: list_books()
+
   def list_katalog(katalog) do
+    IO.inspect katalog
     Repo.all(from book in Book,
               where: book.location == ^katalog,
               select: book)
+  end
+
+  def suggest(_, ""), do: []
+
+  def suggest(katalog, prefix) do
+    Enum.filter(list_katalog(katalog), &has_prefix?(&1, prefix))
+  end
+
+  def has_prefix?(book, prefix) do
+    String.starts_with?(String.downcase(book.title), String.downcase(prefix))
+  end
+
+  def search_by_title(katalog, title) do
+    list_katalog(katalog)
+    |> Enum.filter(&(&1.title == title))
   end
 
   @doc """
