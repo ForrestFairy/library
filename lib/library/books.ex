@@ -11,7 +11,6 @@ defmodule Library.Books do
   def list_katalog("0"), do: list_books()
 
   def list_katalog(katalog) do
-    IO.inspect katalog
     Repo.all(from book in Book,
               where: book.location == ^katalog,
               select: book)
@@ -27,9 +26,26 @@ defmodule Library.Books do
     String.starts_with?(String.downcase(book.title), String.downcase(prefix))
   end
 
+  def search_by_title(title), do: search_by_title("0", title)
+
   def search_by_title(katalog, title) do
     list_katalog(katalog)
     |> Enum.filter(&(&1.title == title))
+  end
+
+  def reserve_book(id) do
+    id
+    |> get_book!
+    |> reserve
+  end
+
+  defp reserve(%Book{} = book) do
+    case book.state do
+      1 ->
+        update_book(book, %{state: 2})
+      _ ->
+        {:error, :not_available}
+    end
   end
 
   @doc """

@@ -22,9 +22,10 @@ defmodule LibraryWeb.Router do
 
     live "/katalog/index", Live.LibraryLive.Index, :index
     live "/katalog/regulamin", Live.LibraryLive.Regulamin, :regulamin
-    live "/katalog/pomoc", Live.LibraryLive.Pommoc, :pomoc
+    live "/katalog/pomoc", Live.LibraryLive.Pomoc, :pomoc
     live "/katalog/logowanie", Live.LibraryLive.Konto, :logowanie
     live "/katalog/ini", Live.LibraryLive.Katalog, :katalog
+    live "/katalog/detail", Live.LibraryLive.Detail, :detail
   end
 
   # Other scopes may use custom stacks.

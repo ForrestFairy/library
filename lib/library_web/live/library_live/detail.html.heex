@@ -1,0 +1,73 @@
+<div class="p-5 grid grid-cols-3 h-full">
+   
+    <h1 class="col-start-1">Halo</h1>
+    
+    <div class="col-start-2 col-span-2 bg-sage h-auto p-5">
+        <h1 class="font-bold text-3xl"><%= @book.title %> </h1>
+        <h2 class=""><b>Autor: </b> <%= @book.author %></h2>
+
+        <hr class="h-px my-4 bg-oxford_blue border-0">
+
+        <table class="table-fixed w-4/5 border-separate border-spacing-2">
+            <tr class="w-10">
+                <td class="bg-almond font-bold w-2/5">
+                    Hasła:
+                </td>
+                <td class="bg-almond border border-slate-600">
+                    <%= for genre <- @book.genre do %>
+                        <div> <%= genre %> </div>
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <td class="bg-almond font-bold">
+                    ISBN:
+                </td>
+                <td class="bg-almond border border-slate-600">
+                    <%= @book.isbn %>
+                </td>
+            </tr>
+        </table>
+
+        <hr class="h-px my-4 bg-oxford_blue border-0">
+
+        <h2 class="font-bold">Sprawdź dostępność, zarezerwuj:</h2>
+
+        <table class="mt-2 border-separate border-spacing-2 w-4/5 border">
+            <thead>
+                <tr>
+                    <th>Lokacja</th>
+                    <th>Dane</th>
+                    <th>Dostępność</th>
+                    <th>Rezerwacja</th>
+                </tr>  
+            </thead>
+            <tbody>
+                <%= for book <- Library.Books.search_by_title(@book.title) do %>
+                    <tr>
+                        <td class="bg-almond">
+                            <%= book.location %>
+                        </td>
+                        <td class="bg-almond">
+                            <div>Inwentarz nr: </div>
+                            <div>dostępność (na ile)</div>
+                        </td>
+                        <td class="bg-almond">
+                            <%= case book.state do %>
+                                <% 2 -> %>
+                                    Rezerwacja
+                                <% 1 -> %>
+                                    <img class="h-5" src="/images/tick.svg">
+                                <% 0 -> %>
+                                    <img class="h-5" src="/images/cross.svg">
+                            <% end %>
+                        </td>
+                        <td class="bg-almond">
+                            <button phx-click="reserve" value={book.id}>Rezerwacja</button>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
