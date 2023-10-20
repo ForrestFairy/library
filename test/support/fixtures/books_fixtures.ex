@@ -11,10 +11,10 @@ defmodule Library.BooksFixtures do
     {:ok, book} =
       attrs
       |> Enum.into(%{
-        ISBN: "some ISBN",
+        isbn: "some isbn",
         author: "some author",
         genre: ["option1", "option2"],
-        location: "some location",
+        location: 1,
         state: 42,
         title: "some title"
       })

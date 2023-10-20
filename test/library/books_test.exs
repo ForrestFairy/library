@@ -8,7 +8,7 @@ defmodule Library.BooksTest do
 
     import Library.BooksFixtures
 
-    @invalid_attrs %{state: nil, title: nil, location: nil, author: nil, ISBN: nil, genre: nil}
+    @invalid_attrs %{state: nil, title: nil, location: nil, author: nil, isbn: nil, genre: nil}
 
     test "list_books/0 returns all books" do
       book = book_fixture()
@@ -21,14 +21,14 @@ defmodule Library.BooksTest do
     end
 
     test "create_book/1 with valid data creates a book" do
-      valid_attrs = %{state: 42, title: "some title", location: "some location", author: "some author", ISBN: "some ISBN", genre: ["option1", "option2"]}
+      valid_attrs = %{title: "some title", location: 12, author: "some author", isbn: "some isbn", genre: ["option1", "option2"]}
 
       assert {:ok, %Book{} = book} = Books.create_book(valid_attrs)
-      assert book.state == 42
+      assert book.state == 1
       assert book.title == "some title"
-      assert book.location == "some location"
+      assert book.location == 12
       assert book.author == "some author"
-      assert book.ISBN == "some ISBN"
+      assert book.isbn == "some isbn"
       assert book.genre == ["option1", "option2"]
     end
 
@@ -38,14 +38,14 @@ defmodule Library.BooksTest do
 
     test "update_book/2 with valid data updates the book" do
       book = book_fixture()
-      update_attrs = %{state: 43, title: "some updated title", location: "some updated location", author: "some updated author", ISBN: "some updated ISBN", genre: ["option1"]}
+      update_attrs = %{state: 43, title: "some updated title", location: 12, author: "some updated author", isbn: "some updated isbn", genre: ["option1"]}
 
       assert {:ok, %Book{} = book} = Books.update_book(book, update_attrs)
       assert book.state == 43
       assert book.title == "some updated title"
-      assert book.location == "some updated location"
+      assert book.location == 12
       assert book.author == "some updated author"
-      assert book.ISBN == "some updated ISBN"
+      assert book.isbn == "some updated isbn"
       assert book.genre == ["option1"]
     end
 

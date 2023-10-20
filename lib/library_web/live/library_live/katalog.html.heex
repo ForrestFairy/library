@@ -1,3 +1,68 @@
-Hello in katalog
+<h1 class="p-4">Katalog<b> <%= @katalog %> </b></h1>
 
-<b> <%= @katalog %> </b>
+<div class="p-4">
+    <%= for book <- Books.list_katalog(assigns.katalog) do %>
+        <div>
+        <%= book.author %> -
+        <b> <%= book.title %> </b>
+        </div>
+    <% end %>
+</div>
+
+<h2>Książki</h2>
+<div id="search">
+
+    <form phx-submit="book-search" phx-change="suggest-book">
+        <input type="text" name="book" value={@book}
+                placeholder="Tytuł książki"
+                autocomplete="off"
+                list="matches"
+                phx-debounce="1000"
+                readonly={@loading}>
+
+        <datalist id="matches">
+            <%= for match <- Enum.uniq_by(@matches, fn book -> book.title end) do %>
+                <option value={match.title}><%= match.title %></option>
+            <% end %>
+        </datalist>
+
+        <button type="submit">
+            Szukaj <!-- <img src="images/search.svg"> -->
+        </button>
+
+    </form>
+
+    
+
+    <%= if @loading do %>
+        <div class="loader">
+            Loading...
+        </div>
+    <% end %>
+
+    <div class="grid grid-cols-2 gap-4">
+        
+            <%= for book <- @books do %>
+                <div class="w-3/4 outline rounded mt-3 justify-center justify-self-center grid grid-cols-2 book">
+                    <div class="pt-5 pl-5 first-line">
+                        <div class="title">
+                            <b><%= book.title %></b>
+                        </div>
+                        <div class="author">
+                            <%= book.author %>
+                        </div>
+                    </div>
+                    <div class="pt-5 pr-5 justify-end justify-self-end second-line">
+                        <%= if book.state == 1 do %>
+                            <img class="h-12" src="/images/tick.svg">
+                        <% else %>
+                            <img class="h-12" src="/images/cross.svg">
+                        <% end %>
+                    </div>
+                    <div class="relative left-0 mt-3 col-span-2 bg-oxford_blue h-6 w-auto rounded-t-sm grid grid-cols-1 place-items-center">
+                        <a class="text-sage underline hover:text-almond" href={"/katalog/detail/?Pozycja=" <> book.id} >Więcej szczegółów</a>
+                    </div>
+                </div>
+            <% end %> 
+    </div>
+</div>

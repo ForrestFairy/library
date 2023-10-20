@@ -9,6 +9,9 @@ defmodule Library.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
+      preferred_cli_env: [
+        "test.watch": :test
+      ],
       deps: deps()
     ]
   end
@@ -49,6 +52,7 @@ defmodule Library.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
+      {:mix_test_watch, "~> 1.0", only: [:dev, :test], runtime: false},
       {:plug_cowboy, "~> 2.5"}
     ]
   end
