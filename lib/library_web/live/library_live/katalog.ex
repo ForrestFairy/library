@@ -1,6 +1,7 @@
 defmodule LibraryWeb.Live.LibraryLive.Katalog do
   use LibraryWeb, :live_view
   alias Library.Books
+  alias LibraryWeb.Live.LibraryLive.Katalog
 
   def mount(%{"katalog" => katalog} = _params, _session, socket) do
     socket =
@@ -49,4 +50,8 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
         {:noreply, socket}
     end
   end
+
+
+  def katalog_name("0"), do: "Centralny"
+  def katalog_name("1"), do: "Mediateka START-STOP"
 end

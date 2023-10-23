@@ -1,4 +1,6 @@
-<h1 class="p-4">Katalog<b> <%= @katalog %> </b></h1>
+<div class="grid justify-center">
+    <h1 class="p-4">Katalog<b> <%= Katalog.katalog_name(@katalog) %> </b></h1>
+</div>
 
 <div class="p-4">
     <%= for book <- Books.list_katalog(assigns.katalog) do %>
