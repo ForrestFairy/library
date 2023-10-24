@@ -2,6 +2,13 @@
 
 My try of somewhat bigger project which is a website for library created in Elixir with Phoenix framework
 
+# Things to add
+
+- [ ] Pagination
+- [ ] A way to add books from a csv file
+- [ ] Easy way to choose a specific katalog
+- [ ] Add users with authentication
+
 # How to start
 
 To start your Phoenix server:

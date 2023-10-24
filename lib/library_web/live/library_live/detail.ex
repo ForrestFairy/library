@@ -1,6 +1,7 @@
 defmodule LibraryWeb.Live.LibraryLive.Detail do
   use LibraryWeb, :live_view
   alias Library.Books
+  alias LibraryWeb.Live.LibraryLive.Katalog
 
   def mount(%{"Pozycja" => id} = _params, _session, socket) do
     socket = assign(socket, book: Books.get_book!(id))

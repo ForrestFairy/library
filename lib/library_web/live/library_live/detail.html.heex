@@ -46,7 +46,7 @@
                 <%= for book <- Library.Books.search_by_title(@book.title) do %>
                     <tr>
                         <td class="bg-almond">
-                            <%= book.location %>
+                            <%= Katalog.katalog_name(@book.location) %>
                         </td>
                         <td class="bg-almond">
                             <div>Inwentarz nr: </div>
