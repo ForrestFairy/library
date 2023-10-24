@@ -2,34 +2,56 @@ defmodule Library.Books do
   @moduledoc """
   The Books context.
   """
-
+  @base_amount 6
   import Ecto.Query, warn: false
   alias Library.Repo
 
   alias Library.Books.Book
+  alias Library.Pagination
 
-  def list_katalog("0"), do: list_books()
+  def list_katalog(0), do: list_books(:paged, 1, @base_amount)
+  def list_katalog(0, page), do: list_books(:paged, page, @base_amount)
+  def list_katalog(0, page, per_page), do: list_books(:paged, page, per_page)
 
-  def list_katalog(katalog) do
-    Repo.all(from book in Book,
-              where: book.location == ^katalog,
-              select: book)
+  def list_katalog(a, page \\ 1, per_page \\ @base_amount)
+
+  def list_katalog(katalog, page, per_page) do
+    Book
+    |> where(location: ^katalog)
+    |> order_by(desc: :title)
+    |> Pagination.page(page, per_page: per_page)
   end
 
   def suggest(_, ""), do: []
 
   def suggest(katalog, prefix) do
-    Enum.filter(list_katalog(katalog), &has_prefix?(&1, prefix))
+    katalog
+    |> list_katalog
+    |> Map.fetch!(:list)
+    |> Enum.filter(&has_prefix?(&1, prefix))
+    |> Enum.slice(1..5)
   end
 
   def has_prefix?(book, prefix) do
     String.starts_with?(String.downcase(book.title), String.downcase(prefix))
   end
 
-  def search_by_title(title), do: search_by_title("0", title)
+  def search_by_title("") do
+    list_katalog(0)
+    |> Map.fetch!(:list)
+  end
+
+  def search_by_title(title), do: search_by_title(0, title)
+
+  def search_by_title(katalog, "") do
+    katalog
+    |> list_katalog
+    |> Map.fetch!(:list)
+  end
 
   def search_by_title(katalog, title) do
     list_katalog(katalog)
+    |> Map.fetch!(:list)
     |> Enum.filter(&(&1.title == title))
   end
 
@@ -59,6 +81,13 @@ defmodule Library.Books do
   """
   def list_books do
     Repo.all(Book)
+  end
+
+  def list_books(a, page \\ 1, per_page \\ 5)
+  def list_books(:paged, page, per_page) do
+    Book
+    |> order_by(desc: :title)
+    |> Pagination.page(page, per_page: per_page)
   end
 
   @doc """

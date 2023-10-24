@@ -3,16 +3,21 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
   alias Library.Books
   alias LibraryWeb.Live.LibraryLive.Katalog
 
-  def mount(%{"katalog" => katalog} = _params, _session, socket) do
+  def mount(%{"katalog" => katalog} = params, _session, socket) do
+    page = String.to_integer(params["page"]) || 1
+    katalog = String.to_integer(katalog)
+    pagination = Books.list_katalog(katalog, page, 4)
+
     socket =
       assign(socket,
         katalog: katalog,
         book: "",
         matches: [],
-        books:
-        Books.list_katalog(katalog),
-        # Books.search_by_title("0", "Przedwiośnie"),
-        loading: false
+        page: page,
+        books: pagination.list,
+        loading: false,
+        has_next: pagination.has_next,
+        has_prev: pagination.has_prev
       )
 
     {:ok, socket}
@@ -52,6 +57,13 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
   end
 
 
-  def katalog_name("0"), do: "Centralny"
-  def katalog_name("1"), do: "Mediateka START-STOP"
+  def katalog_name(0), do: "Centralny"
+  def katalog_name(1), do: "Mediateka START-STOP"
+  def katalog_name(_), do: "Reszta niezrobiona"
+
+  def do_sth(socket) do
+    IO.inspect socket
+
+    ""
+  end
 end

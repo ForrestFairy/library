@@ -2,15 +2,6 @@
     <h1 class="p-4">Katalog<b> <%= Katalog.katalog_name(@katalog) %> </b></h1>
 </div>
 
-<div class="p-4">
-    <%= for book <- Books.list_katalog(assigns.katalog) do %>
-        <div>
-        <%= book.author %> -
-        <b> <%= book.title %> </b>
-        </div>
-    <% end %>
-</div>
-
 <h2>Książki</h2>
 <div id="search">
 
@@ -65,6 +56,6 @@
                         <a class="text-sage underline hover:text-almond" href={"/katalog/detail/?Pozycja=" <> book.id} >Więcej szczegółów</a>
                     </div>
                 </div>
-            <% end %> 
+                    <% end %>
     </div>
 </div>
