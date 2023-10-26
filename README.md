@@ -5,7 +5,7 @@ My try of somewhat bigger project which is a website for library created in Elix
 # Things to add
 
 - [x] Pagination
-- [ ] A way to add books from a csv file
+- [x] A way to add books from a csv file
 - [ ] Easy way to choose a specific katalog
 - [ ] Add users with authentication
 
