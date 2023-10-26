@@ -3,7 +3,7 @@
 </div>
 
 <h2>Książki</h2>
-<div id="search">
+<div class="h-max bg-almond rounded" id="search">
 
     <form phx-submit="book-search" phx-change="suggest-book">
         <input type="text" name="book" value={@book}
@@ -58,19 +58,20 @@
             </div>
         <% end %>
     </div>
-</div>
-<div class="grid grid-cols-3 relative bottom-0 pt-5">
-    <div class="justify-self-end">
-        <%= if @has_prev do %>
-            <button class="border border-slate-500 rounded" phx-click="prev-page" value={@page}>&lt</button>
-        <% end %>
-    </div>
-    <div class="justify-self-center border border-slate-500 rounded">
-        <b><%= @page %></b>
-    </div>
-    <div class="justify-self-start">
-        <%= if @has_next do %>
-            <button class="border border-slate-500 rounded" phx-click="next-page" value={@page}>></button>
-        <% end %>
+
+    <div class="grid grid-cols-3 relative bottom-0 py-5">
+        <div class="justify-self-end">
+            <%= if @has_prev do %>
+                <button class="border border-slate-500 rounded" phx-click="prev-page" value={@page}>&lt</button>
+            <% end %>
+        </div>
+        <div class="justify-self-center border border-slate-500 rounded">
+            <b><%= @page %></b>
+        </div>
+        <div class="justify-self-start">
+            <%= if @has_next do %>
+                <button class="border border-slate-500 rounded" phx-click="next-page" value={@page}>></button>
+            <% end %>
+        </div>
     </div>
 </div>

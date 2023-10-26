@@ -2,23 +2,22 @@ defmodule Library.Books do
   @moduledoc """
   The Books context.
   """
-  @base_amount 6
+  @base_amount 8
   import Ecto.Query, warn: false
   alias Library.Repo
 
   alias Library.Books.Book
   alias Library.Pagination
-
   def list_katalog(0), do: list_books(:paged, 1, @base_amount)
   def list_katalog(0, page), do: list_books(:paged, page, @base_amount)
-  def list_katalog(0, page, per_page), do: list_books(:paged, page, per_page)
 
   def list_katalog(a, page \\ 1, per_page \\ @base_amount)
+  def list_katalog(0, page, per_page), do: list_books(:paged, page, per_page)
 
   def list_katalog(katalog, page, per_page) do
     Book
     |> where(location: ^katalog)
-    |> order_by(desc: :title)
+    |> order_by(asc: :title)
     |> Pagination.page(page, per_page: per_page)
   end
 
@@ -86,7 +85,7 @@ defmodule Library.Books do
   def list_books(a, page \\ 1, per_page \\ 5)
   def list_books(:paged, page, per_page) do
     Book
-    |> order_by(desc: :title)
+    |> order_by(asc: :title)
     |> Pagination.page(page, per_page: per_page)
   end
 

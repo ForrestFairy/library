@@ -11,7 +11,7 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
       end
 
     katalog = String.to_integer(katalog)
-    pagination = Books.list_katalog(katalog, page, 4)
+    pagination = Books.list_katalog(katalog, page)
 
     socket =
       assign(socket,
