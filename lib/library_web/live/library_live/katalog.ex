@@ -4,7 +4,12 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
   alias LibraryWeb.Live.LibraryLive.Katalog
 
   def mount(%{"katalog" => katalog} = params, _session, socket) do
-    page = String.to_integer(params["page"]) || 1
+    page =
+      case params["page"] do
+        nil -> 1
+        p -> String.to_integer(p)
+      end
+
     katalog = String.to_integer(katalog)
     pagination = Books.list_katalog(katalog, page, 4)
 
@@ -38,6 +43,18 @@ defmodule LibraryWeb.Live.LibraryLive.Katalog do
   def handle_event("suggest-book", %{"book" => prefix}, socket) do
     socket = assign(socket, matches: Books.suggest(socket.assigns.katalog, prefix))
     {:noreply, socket}
+  end
+
+  def handle_event("next-page", %{"value" => page}, socket) do
+    page = String.to_integer(page)
+
+    {:noreply, redirect(socket, to: ~p"/katalog/ini?katalog=#{socket.assigns.katalog}&page=#{page + 1}")}
+  end
+
+  def handle_event("prev-page", %{"value" => page}, socket) do
+    page = String.to_integer(page)
+
+    {:noreply, redirect(socket, to: ~p"/katalog/ini?katalog=#{socket.assigns.katalog}&page=#{page - 1}")}
   end
 
   def handle_info({:run_book_search, book}, socket) do
