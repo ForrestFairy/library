@@ -28,7 +28,8 @@ defmodule Library.Books do
     |> list_katalog
     |> Map.fetch!(:list)
     |> Enum.filter(&has_prefix?(&1, prefix))
-    |> Enum.slice(1..5)
+    |> Enum.uniq_by(fn book -> book.title end)
+    |> Enum.slice(0..4)
   end
 
   def has_prefix?(book, prefix) do

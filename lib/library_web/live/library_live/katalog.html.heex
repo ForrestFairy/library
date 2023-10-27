@@ -1,5 +1,5 @@
 <div class="grid justify-center">
-    <h1 class="p-4">Katalog<b> <%= Katalog.katalog_name(@katalog) %> </b></h1>
+    <h1 class="p-4 text-3xl">Katalog<b> <%= Katalog.katalog_name(@katalog) %> </b></h1>
 </div>
 
 <h2>Książki</h2>
@@ -14,7 +14,7 @@
                 readonly={@loading}>
 
         <datalist id="matches">
-            <%= for match <- Enum.uniq_by(@matches, fn book -> book.title end) do %>
+            <%= for match <- @matches do %>
                 <option value={match.title}><%= match.title %></option>
             <% end %>
         </datalist>
@@ -65,7 +65,7 @@
                 <button class="border border-slate-500 rounded" phx-click="prev-page" value={@page}>&lt</button>
             <% end %>
         </div>
-        <div class="justify-self-center border border-slate-500 rounded">
+        <div class="justify-self-center border border-slate-500 rounded w-5 text-center">
             <b><%= @page %></b>
         </div>
         <div class="justify-self-start">
