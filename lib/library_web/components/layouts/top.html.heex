@@ -23,8 +23,18 @@
             <li class="font-bold text-center p-2 bg-cambridge_blue">
                 <a href={~p"/katalog/logowanie"}>Twoje konto</a>
             </li>
-            <li class="font-bold text-center p-2 bg-almond">
-                <a href={~p"/katalog/ini?katalog=0"}>Katalog Książek</a>
+            <li class="font-bold text-center p-2 bg-almond group/item">
+                <!-- <a href={~p"/katalog/ini?katalog=0"}>Katalog Książek</a> -->
+                <p class="group">Katalog Książek</p>
+                <ul class="invisible group-hover/item:visible absolute -right-[207px] -bottom-[64px] bg-sage w-52">
+                <%= for katalog <- 0..5 do %>
+                    <li>
+                        <a class="hover:underline" href={~p"/katalog/ini?katalog=" <> Integer.to_string(katalog)}>
+                            <%= LibraryWeb.Live.LibraryLive.Katalog.katalog_name(katalog) %>
+                        </a>
+                    </li>
+                <% end %>
+                </ul>
             </li>
             <li class="font-bold text-center p-2 bg-cambridge_blue rounded-b-sm">
                 <a href={~p"/"}>Powrót do <b>BIBLIOTEKA</b></a>
